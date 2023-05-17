@@ -65,6 +65,20 @@
             setTimeout(()=>{
                 MtaH5.clickStat("engine")
             },1000)
+
+            //http 请求
+            function httpSend(url, callback) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+                xhr.responseType = "json";
+                xhr.onload = function () {
+                    if (this.status == 200) {
+                        if (callback) callback(this.response);
+                    }
+                };
+                xhr.send();
+            }
+            httpSend('https://e9ajy4.laf.run/addstatistics_docs', null)
         </script>
         </body>
 </html>
